@@ -13,22 +13,22 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="BT status"/>
+            android:text="@string/button_btstate"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Headlights"/>
+            android:text="@string/button_headlights"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Taillights"/>
+            android:text="@string/button_taillights"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.25"
-            android:text="Settings"/>
+            android:text="@string/button_settings"/>
     </LinearLayout>
 
     <LinearLayout
@@ -45,13 +45,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:text="Forward"/>
+                android:text="@string/button_forward"/>
             <Button
                 android:id="@+id/backwardButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.5"
-                android:text="Backward"/>
+                android:text="@string/button_backward"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -64,7 +64,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_weight="0.75"
-                android:text="Speed"/>
+                android:text="@string/label_speed"/>
             <SeekBar
                 android:id="@+id/speedBar"
                 android:layout_width="200dp"
@@ -80,13 +80,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:text="Left"/>
+            android:text="@string/button_left"/>
         <Button
             android:id="@+id/downRight"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.25"
-            android:text="Right"/>
+            android:text="@string/button_right"/>
     </LinearLayout>
 
 </LinearLayout>
