@@ -7,16 +7,16 @@ import android.support.v4.app.DialogFragment;
 import android.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.AdapterView.OnItemClickListener;
 
 /**
  * Created by robin on 12/24/16.
  */
 
 public class BluetoothDialogFragment extends DialogFragment {
+    private BluetoothWorkerThread worker;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) { //TODO refactor
@@ -26,19 +26,10 @@ public class BluetoothDialogFragment extends DialogFragment {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
-        adapter.add("One");
-        adapter.add("Two");
-        adapter.add("Three");
-        adapter.add("Four");
-        adapter.add("Five");
-        adapter.add("Six");
-        //TODO add items in bluetooth worker thread
-        listView.setOnItemClickListener(new OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("Click on " + position);
-            }
-        });
+
+        worker = new BluetoothWorkerThread(adapter);
+        listView.setOnItemClickListener(worker);
+        new Thread(worker).start();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setMessage("Select device"); //TODO setTitle()?
