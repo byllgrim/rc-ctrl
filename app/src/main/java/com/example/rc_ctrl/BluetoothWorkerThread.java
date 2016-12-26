@@ -11,9 +11,9 @@ import android.widget.AdapterView.OnItemClickListener;
  */
 
 public class BluetoothWorkerThread implements Runnable, OnItemClickListener {
-    private ArrayAdapter<String> adapter;
+    private DevicesArrayAdapter adapter;
 
-    public BluetoothWorkerThread(ArrayAdapter<String> adapter) {
+    public BluetoothWorkerThread(DevicesArrayAdapter adapter) {
         this.adapter = adapter;
     }
 

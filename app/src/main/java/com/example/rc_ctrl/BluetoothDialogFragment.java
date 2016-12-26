@@ -24,7 +24,7 @@ public class BluetoothDialogFragment extends DialogFragment {
         View inflatedView = inflater.inflate(R.layout.dialog_bluetooth, null);
         ListView listView = (ListView) inflatedView.findViewById(R.id.deviceList);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1);
+        DevicesArrayAdapter adapter = new DevicesArrayAdapter(getActivity(), android.R.layout.simple_list_item_1);
         listView.setAdapter(adapter);
 
         worker = new BluetoothWorkerThread(adapter);
