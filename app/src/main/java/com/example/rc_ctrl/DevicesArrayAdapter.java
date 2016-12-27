@@ -30,10 +30,8 @@ public class DevicesArrayAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Object item = items.get(position);
         if (item instanceof SeparatorItem) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.device_separator, null);
-
-            TextView text = (TextView) view.findViewById(R.id.separator_text);
+            View view = LayoutInflater.from(context).inflate(android.R.layout.preference_category, null);
+            TextView text = (TextView) view.findViewById(android.R.id.title);
             text.setText(item.toString());
             return view;
         } else if(item instanceof ScanButtonItem) {
@@ -41,9 +39,10 @@ public class DevicesArrayAdapter extends ArrayAdapter {
             button.setText(item.toString());
             return button;
         } else {
-            TextView text = new TextView(context);
+            View view = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, null);
+            TextView text = (TextView) view.findViewById(android.R.id.text1);
             text.setText(item.toString());
-            return text;
+            return view;
         }
     }
 }

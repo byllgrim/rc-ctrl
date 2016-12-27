@@ -34,7 +34,7 @@ public class BluetoothDialogFragment extends DialogFragment {
         new Thread(worker).start();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle("Select device");
+        builder.setTitle("Select bluetooth device");
         builder.setView(inflatedView);
         return builder.create();
     }
