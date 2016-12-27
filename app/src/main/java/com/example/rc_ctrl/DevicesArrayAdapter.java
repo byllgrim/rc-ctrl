@@ -32,7 +32,7 @@ public class DevicesArrayAdapter extends ArrayAdapter {
         if (item instanceof SeparatorItem) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View view = inflater.inflate(R.layout.device_separator, null);
-            
+
             TextView text = (TextView) view.findViewById(R.id.separator_text);
             text.setText(item.toString());
             return view;
