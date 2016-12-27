@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 /**
  * Created by robin on 12/24/16.
  */
@@ -24,7 +26,7 @@ public class BluetoothDialogFragment extends DialogFragment {
         View inflatedView = inflater.inflate(R.layout.dialog_bluetooth, null);
         ListView listView = (ListView) inflatedView.findViewById(R.id.deviceList);
 
-        DevicesArrayAdapter adapter = new DevicesArrayAdapter(getActivity(), android.R.layout.simple_list_item_1);
+        DevicesArrayAdapter adapter = new DevicesArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, new ArrayList());
         listView.setAdapter(adapter);
 
         worker = new BluetoothWorkerThread(adapter);

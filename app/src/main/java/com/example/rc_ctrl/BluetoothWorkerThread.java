@@ -20,12 +20,22 @@ public class BluetoothWorkerThread implements Runnable, OnItemClickListener {
     @Override
     public void run() {
         System.out.println("Thread started");
+        adapter.add(new SeparatorItem("Paired devices"));
         adapter.add("One");
         adapter.add("Two");
         adapter.add("Three");
         adapter.add("Four");
         adapter.add("Five");
         adapter.add("Six");
+        adapter.add(new SeparatorItem("Other devices"));
+        adapter.add("One");
+        adapter.add("Two");
+        adapter.add("Three");
+        adapter.add("Four");
+        adapter.add("Five");
+        adapter.add("Six");
+        adapter.add(new ScanButtonItem());
+        //TODO actually scan for bluetooth devices
     }
 
     @Override
