@@ -1,5 +1,6 @@
 package com.example.rc_ctrl;
 
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
@@ -41,7 +42,10 @@ public class DevicesArrayAdapter extends ArrayAdapter {
         } else {
             View view = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, null);
             TextView text = (TextView) view.findViewById(android.R.id.text1);
-            text.setText(item.toString());
+            if (item instanceof BluetoothDevice)
+                text.setText(((BluetoothDevice) item).getName());
+            else
+                text.setText("error: not a device: " + item.toString());
             return view;
         }
     }

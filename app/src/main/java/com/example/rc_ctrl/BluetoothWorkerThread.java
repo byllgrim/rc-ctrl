@@ -1,9 +1,13 @@
 package com.example.rc_ctrl;
 
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import java.lang.Runnable;
+import java.util.Set;
+
 import android.widget.AdapterView.OnItemClickListener;
 
 /**
@@ -11,29 +15,30 @@ import android.widget.AdapterView.OnItemClickListener;
  */
 
 public class BluetoothWorkerThread implements Runnable, OnItemClickListener {
-    private DevicesArrayAdapter adapter;
+    private DevicesArrayAdapter listAdapter;
+    private BluetoothAdapter btAdapter;
 
-    public BluetoothWorkerThread(DevicesArrayAdapter adapter) {
-        this.adapter = adapter;
+    public BluetoothWorkerThread(DevicesArrayAdapter listAdapter) {
+        this.listAdapter = listAdapter;
+        btAdapter = BluetoothAdapter.getDefaultAdapter();
     }
 
     @Override
     public void run() {
-        adapter.add(new SeparatorItem("Paired devices"));
-        adapter.add("One");
-        adapter.add("Two");
-        adapter.add("Three");
-        adapter.add("Four");
-        adapter.add("Five");
-        adapter.add("Six");
-        adapter.add(new SeparatorItem("Other devices"));
-        adapter.add("One");
-        adapter.add("Two");
-        adapter.add("Three");
-        adapter.add("Four");
-        adapter.add("Five");
-        adapter.add("Six");
-        adapter.add(new ScanButtonItem());
+        listAdapter.add(new SeparatorItem("Paired devices"));
+        Set<BluetoothDevice> paired = btAdapter.getBondedDevices();
+        for (BluetoothDevice device : paired) {
+            listAdapter.add(device);
+        }
+
+        listAdapter.add(new SeparatorItem("Other devices"));
+        listAdapter.add("One");
+        listAdapter.add("Two");
+        listAdapter.add("Three");
+        listAdapter.add("Four");
+        listAdapter.add("Five");
+        listAdapter.add("Six");
+        listAdapter.add(new ScanButtonItem());
         //TODO actually scan for bluetooth devices
         //TODO add headers in constructor or creation of dialog
         //TODO run this thread constantly. Also check bt state constantly.
