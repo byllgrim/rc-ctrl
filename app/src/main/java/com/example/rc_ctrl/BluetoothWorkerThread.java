@@ -3,6 +3,7 @@ package com.example.rc_ctrl;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import java.lang.Runnable;
@@ -14,7 +15,7 @@ import android.widget.AdapterView.OnItemClickListener;
  * Created by robin on 12/25/2016.
  */
 
-public class BluetoothWorkerThread implements Runnable, OnItemClickListener {
+public class BluetoothWorkerThread implements Runnable, OnItemClickListener, OnClickListener {
     private DevicesArrayAdapter listAdapter;
     private BluetoothAdapter btAdapter;
 
@@ -48,5 +49,10 @@ public class BluetoothWorkerThread implements Runnable, OnItemClickListener {
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         System.out.println("Click on " + position);
         //TODO connect to selected device
+    }
+
+    @Override
+    public void onClick(View v) {
+        System.out.println("SCAN BUTTON");
     }
 }

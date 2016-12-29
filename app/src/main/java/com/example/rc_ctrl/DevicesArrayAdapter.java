@@ -19,11 +19,16 @@ import java.util.ArrayList;
 public class DevicesArrayAdapter extends ArrayAdapter {
     private Context context;
     private ArrayList items;
+    private BluetoothWorkerThread worker;
 
     public DevicesArrayAdapter(Context context, int resource, ArrayList items) {
         super(context, resource, items);
         this.context = context;
         this.items = items;
+    }
+
+    public void setWorker(BluetoothWorkerThread worker) {
+        this.worker = worker;
     }
 
     @NonNull
@@ -38,6 +43,7 @@ public class DevicesArrayAdapter extends ArrayAdapter {
         } else if(item instanceof ScanButtonItem) {
             Button button = new Button(context);
             button.setText(item.toString());
+            button.setOnClickListener(worker);
             return button;
         } else {
             View view = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, null);
