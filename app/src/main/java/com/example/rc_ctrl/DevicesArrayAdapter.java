@@ -1,5 +1,6 @@
 package com.example.rc_ctrl;
 
+import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -41,8 +42,12 @@ public class DevicesArrayAdapter extends ArrayAdapter {
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TODO start scan
+                    BluetoothAdapter.getDefaultAdapter().startDiscovery();
                     System.out.println("SCANNING");
+                    //TODO cancelDiscovery
+                    //TODO dont scan if already connected?
+                    //TODO show loading animation
+                    //TODO scroll down list when adding new devices
                 }
             });
             return button;

@@ -68,12 +68,6 @@ public class BluetoothDialogFragment extends DialogFragment {
         }
 
         listAdapter.add(new SeparatorItem("Other devices"));
-        listAdapter.add("One");
-        listAdapter.add("Two");
-        listAdapter.add("Three");
-        listAdapter.add("Four");
-        listAdapter.add("Five");
-        listAdapter.add("Six");
         listAdapter.add(new ScanButtonItem());
     }
 
@@ -85,7 +79,7 @@ public class BluetoothDialogFragment extends DialogFragment {
                     return;
 
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                listAdapter.insert(device, listAdapter.getCount() - 2);
+                listAdapter.insert(device, listAdapter.getCount() - 1);
             }
         };
 
