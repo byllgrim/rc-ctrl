@@ -42,8 +42,14 @@ public class BluetoothDialogFragment extends DialogFragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                System.out.println("Click on " + position);
+                Object item = listAdapter.getItem(position);
+
+                if (item == null || !(item instanceof BluetoothDevice))
+                    return;
+
+                new Thread(new ConnectionThread((BluetoothDevice) item)).start();
                 //TODO connect to selected device
+                //TODO move to dedicated class
             }
         });
         setupBroadcastReceiver();
@@ -80,6 +86,7 @@ public class BluetoothDialogFragment extends DialogFragment {
 
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 listAdapter.insert(device, listAdapter.getCount() - 1);
+                //TODO check if MAC address already exist
             }
         };
 
